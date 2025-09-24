@@ -18,4 +18,11 @@ y_prediction = perceptron.predict(X)  # Prediu
 #  Resultats
 plt.figure(1)
 plt.scatter(X[:, 0], X[:, 1], c=y_prediction)  # Mostram el conjunt de mostres el color indica la classe
+# Afegim la recta de decisió
+x_min, x_max = plt.xlim()
+x_vals = np.linspace(x_min, x_max, 100)
+# w0 + w1*x + w2*y = 0  → y = -(w0 + w1*x)/w2
+w0, w1, w2 = perceptron.w_
+y_vals = -(w0 + w1 * x_vals) / w2
+plt.plot(x_vals, y_vals, "g", label="Línia de decisió")
 plt.show()
